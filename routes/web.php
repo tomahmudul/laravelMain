@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OstadController;
+use App\Http\Controllers\WeatherController; 
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/hi', [OstadController::class,'sayHi']);
+
+Route::get('/hello', [OstadController::class, 'hello']);
+
+Route::get('/greet/{name?}', [OstadController::class,'greet']);
+
+Route::post('/form', [OstadController::class,'samplePostRequest']);
+
+Route::get('/form', [OstadController::class,'sampleGetRequest']);
+
+Route::get('/location', [WeatherController::class, "location"]);
