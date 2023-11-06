@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Http;
 use Illuminate\Http\Request;
 
 class WeatherController extends Controller
@@ -29,5 +30,15 @@ class WeatherController extends Controller
 
         // return view("lc",$location);
         return view("lc",["location"=>$location, "seasons"=>$seasons]);
+   }
+
+   function weather($location){
+    //return $location;
+    $weatherDetails = Http::get("https://wttr.in/{$location}?format=j1")->json();
+    $currentTemp = $weatherDetails["current_condition"][0]["temp_C"];
+    $currentCondition = $weatherDetails["current_condition"][0]["weatherDesc"][0]["value"];
+
+    return view("weather",compact("location","currentTemp","currentCondition"));
+
    }
 }

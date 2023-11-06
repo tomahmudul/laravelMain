@@ -30,3 +30,5 @@ Route::post('/form', [OstadController::class,'samplePostRequest']);
 Route::get('/form', [OstadController::class,'sampleGetRequest']);
 
 Route::get('/location', [WeatherController::class, "location"]);
+
+Route::get("/weather/{location}", [WeatherController::class,"weather"]);
