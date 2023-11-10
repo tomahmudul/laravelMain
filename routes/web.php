@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OstadController;
 use App\Http\Controllers\WeatherController; 
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,16 +20,46 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hi', [OstadController::class,'sayHi']);
+Route:: get("/assignment", [UserController::class,"assignment_module7"]);
 
-Route::get('/hello', [OstadController::class, 'hello']);
 
-Route::get('/greet/{name?}', [OstadController::class,'greet']);
 
-Route::post('/form', [OstadController::class,'samplePostRequest']);
+// Route::get('/hi', [OstadController::class,'sayHi']);
 
-Route::get('/form', [OstadController::class,'sampleGetRequest']);
+// Route::get('/hello', [OstadController::class, 'hello']);
 
-Route::get('/location', [WeatherController::class, "location"]);
+// Route::get('/greet/{name?}', [OstadController::class,'greet']);
 
-Route::get("/weather/{location}", [WeatherController::class,"weather"]);
+// Route::post('/form', [OstadController::class,'samplePostRequest']);
+
+// Route::get('/form', [OstadController::class,'sampleGetRequest']);
+
+// Route::get('/location', [WeatherController::class, "location"]);
+
+// Route::get("/weather/{location}", [WeatherController::class,"weather"]);
+
+// Route::get("/hello", function(){
+//     return "Hello from web";
+// });
+
+// //group of admin routing
+// Route::group(["prefix"=> "admin"], function () {
+
+//     Route::get("/", function(){
+//         return "This is our admin dashboard";
+//     });
+
+//     Route::get("/user-list", function(){
+//         return "admin user list page";
+//     });
+
+//     Route::get("/create-blog", function(){
+//         return "admin create blog page";
+//     });
+
+// });
+
+// //Basic routing
+// Route::get("/greetings", function (){
+//     return "Hello world";
+// });

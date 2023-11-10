@@ -20,3 +20,27 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/location', [WeatherController::class,'displayLocationDetails']);
 
+Route::get("/hello", function(){
+    return "Hello from api";
+});
+
+Route::get("/", function(){
+    return response()->json([
+        "message"=> "hello wordld!"
+        ]);
+});
+
+// return response()->json([
+
+// ]);
+
+
+//return response("Hello world", 200);
+
+//return response()->view("welcome");
+
+// Route::get("", function(){
+//     return response()->view("welcome", [
+//         "name"=>"alex"
+//     ]);
+// });
