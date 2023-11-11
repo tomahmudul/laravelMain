@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OstadController;
 use App\Http\Controllers\WeatherController; 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AboutController;
+ 
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +23,12 @@ Route::get('/', function () {
 });
 
 Route:: get("/assignment", [UserController::class,"assignment_module7"]);
+
+//Task 1
+Route:: get("/about", [AboutController::class,"index"]);
+
+//Task 2
+Route:: get("/login/{email}/{password}", [UserController::class,"login"]);
 
 
 
