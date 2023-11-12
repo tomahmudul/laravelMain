@@ -22,13 +22,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route:: get("/assignment", [UserController::class,"assignment_module7"]);
+Route::get("/assignment", [UserController::class,"assignment_module7"]);
 
 //Task 1
-Route:: get("/about", [AboutController::class,"index"]);
+Route::get("/about", [AboutController::class,"index"]);
 
 //Task 2
-Route:: get("/login/{email}/{password}", [UserController::class,"login"]);
+Route::post("/login", [UserController::class,"login"]);
 
 
 

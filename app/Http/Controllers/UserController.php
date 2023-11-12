@@ -10,7 +10,10 @@ class UserController extends Controller
         return "Hello, Laravel!";
     }
 
-    public function login($email,$password){
+    public function login(Request $request){
+
+        $email = $request->input('email');    
+        $password = $request->input('password');
 
         if($email == "hassan@gmail.com" && $password == "123"){
             return "Login successful";
