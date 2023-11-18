@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\OstadController;
-use App\Http\Controllers\WeatherController; 
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\AboutController;
- 
+use App\Http\Controllers\ProfileController;
+// use App\Http\Controllers\OstadController;
+// use App\Http\Controllers\WeatherController; 
+// use App\Http\Controllers\UserController;
+// use App\Http\Controllers\AboutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,17 +18,21 @@ use App\Http\Controllers\AboutController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route:: get("/assignment", [UserController::class,"assignment_module7"]);
 
-//Task 1
-Route:: get("/about", [AboutController::class,"index"]);
+Route::get("/profile/{id}", [ProfileController::class,"index"]);
 
-//Task 2
-Route::post("/login", [UserController::class,"login"]);
+
+// Route:: get("/assignment", [UserController::class,"assignment_module7"]);
+
+// //module7 Task 1
+// Route:: get("/about", [AboutController::class,"index"]);
+
+// //module7 Task 2
+// Route::post("/login", [UserController::class,"login"]);
 
 
 // Route::get('/hi', [OstadController::class,'sayHi']);
