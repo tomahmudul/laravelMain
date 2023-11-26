@@ -1,11 +1,13 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
+use Illuminate\Http\Request;
 // use App\Http\Controllers\OstadController;
-// use App\Http\Controllers\WeatherController; 
+// use App\Http\Controllers\WeatherController;
 // use App\Http\Controllers\UserController;
-// use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AboutController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DemoController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,15 +18,59 @@ use App\Http\Controllers\ProfileController;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
-*/
+ */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get( '/', function () {
+    return view( 'welcome' );
+} );
 
 
-Route::get("/profile/{id}", [ProfileController::class,"index"]);
+Route::get('/StoringData/{email?}', [DemoController::class,'StoringData']);
+Route::get('/RetrivingData', [DemoController::class,'RetrivingData']);
+Route::get('/DeletingData', [DemoController::class,'DeletingData']);
 
+// //middleware
+// Route::get('/hello', function () {
+//     return "Hello world";
+// } )->middleware("throttle:5,1");
+
+
+// Route::get("/hello", [AboutController::class, "hello"] )->middleware("simple");
+// Route::get("/hi", [AboutController::class, "hi"] )->middleware("simple");
+
+Route::middleware(["simple"])->group( function () {
+    Route::get("/hello", [AboutController::class, "hello"] );
+    Route::get("/hi", [AboutController::class, "hi"] );
+});
+
+
+//Assignment8, Task 1
+Route::post( "/form-submit", function ( Request $request ) {
+    $email = $request->input( "email" );
+    if ( $email && $email == "john@test.com" ) {
+        return response()->json( [
+            'status'  => 'success',
+            "message" => "Form submitted successfully.",
+            'email'   => $email,
+        ], 200 );
+    } else {
+        return response()->json( [
+            "status"  => "failed",
+            "message" => "Form submission failed.",
+        ], 500 );
+    }
+} );
+
+//Assignment8, Task 2
+
+Route::get( "/user-agent", function ( Request $request ) {
+    $userAgent = $request->header( "User-Agent" );
+    return response()->json( [
+        $userAgent,
+    ] );
+} );
+
+//Route::get("/profile/{id}", [ProfileController::class,"index"]);
 
 // Route:: get("/assignment", [UserController::class,"assignment_module7"]);
 
@@ -33,7 +79,6 @@ Route::get("/profile/{id}", [ProfileController::class,"index"]);
 
 // //module7 Task 2
 // Route::post("/login", [UserController::class,"login"]);
-
 
 // Route::get('/hi', [OstadController::class,'sayHi']);
 
