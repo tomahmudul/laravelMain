@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 
 class UserController extends Controller
 {
@@ -20,5 +22,11 @@ class UserController extends Controller
             return "Invalid credentials";
         }
 
+    }
+
+    public function userData(){
+        $users = DB::table('users')->get(); 
+        print_r($users);exit;
+        //return view('user.index', ['users' => $users]);
     }
 }

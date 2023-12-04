@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 // use App\Http\Controllers\OstadController;
 // use App\Http\Controllers\WeatherController;
-// use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AboutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DemoController;
@@ -22,7 +22,28 @@ use App\Http\Controllers\DemoController;
 
 Route::get( '/', function () {
     return view( 'welcome' );
-} );
+});
+
+Route::get('/terms', function () {
+    return view('terms');
+});
+
+Route::get('/login', function () {
+    return view('login');
+});
+
+Route::get('/register', function () {
+    return view('register');
+});
+
+Route::get('/profile', function () {
+    return view('profile');
+});
+
+
+
+Route::get('/users', [UserController::class,'userData']);
+
 
 
 Route::get('/StoringData/{email?}', [DemoController::class,'StoringData']);
